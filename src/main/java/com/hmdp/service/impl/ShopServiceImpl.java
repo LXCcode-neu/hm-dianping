@@ -46,7 +46,7 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements IS
      */
     @Override
     public Result queryById(Long id) {
-        /*String key="cache:shop:"+id;
+        String key="cache:shop:"+id;
        //1.从redis查询缓存
        String shopJson = stringRedisTemplate.opsForValue().get(key);
         //2.判断缓存是否存在
@@ -61,10 +61,16 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements IS
         }
         //4.不存在 查询数据库
         Shop shop = getById(id);
-        //5.数据库不存在 返回错误*/
+        //5.数据库不存在 返回错误
 
         //逻辑过期解决缓存击穿
-        Shop shop = queryWithLogicalExpire(id);
+        // 调用解决缓存击穿的方法
+       /* Shop shop = cacheClient.handleCacheBreakdown(CACHE_SHOP_KEY, id, Shop.class,
+                this::getById, CACHE_SHOP_TTL, TimeUnit.SECONDS);
+        if (Objects.isNull(shop)) {
+            return Result.fail("店铺不存在");
+        }*/
+
         if(shop==null){
             //返回错误信息
             return Result.fail("店铺不存在");
