@@ -18,8 +18,8 @@ public class SimpleRedisLock implements ILock{
         this.name = name;
         this.stringRedisTemplate = stringRedisTemplate;
     }
-    private static final String KEY_PREFIX="lock:";
-    private static final String ID_PREFIX= UUID.randomUUID().toString(true) +"-";
+    public static final String KEY_PREFIX="lock:";
+    public static final String ID_PREFIX= UUID.randomUUID().toString(true) +"-";
     private static final DefaultRedisScript UNLOCK_SCRIPT;
     static {
         UNLOCK_SCRIPT = new DefaultRedisScript();
