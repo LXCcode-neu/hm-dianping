@@ -76,7 +76,6 @@ public class UserController {
         UserDTO userdto=UserHolder.getUser();
         return Result.ok(userdto);
     }
-
     @GetMapping("/info/{id}")
     public Result info(@PathVariable("id") Long userId){
         // 查询详情
@@ -110,10 +109,8 @@ public class UserController {
     public Result sign(){
         return userService.sign();
     }
-
     @GetMapping("/sign/count")
     public Result count() {
         return userService.signCount();
     }
-
 }
