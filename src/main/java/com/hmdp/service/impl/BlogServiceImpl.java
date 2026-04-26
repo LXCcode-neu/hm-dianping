@@ -101,7 +101,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
             stringRedisTemplate.opsForZSet().add(key,blog.getId().toString(),  System.currentTimeMillis());
         }
         // 返回id
-        return Result.ok(blog.getId());
+        return Result.ok();
 
     }
 
