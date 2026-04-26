@@ -60,7 +60,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
             blog.setIcon(user.getIcon());
             isBlogLiked(blog);
         });
-        return Result.ok(records);
+        return Result.ok();
     }
 
     @Override
