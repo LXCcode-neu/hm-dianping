@@ -62,7 +62,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             return Result.fail("手机号格式错误");
         }
         //3.符合，生成验证码
-        String code = RandomUtil.randomNumbers(6);
+        String code = RandomUtil.randomNumbers(5);
         //4.保存验证码到session
         stringRedisTemplate.opsForValue().set(LOGIN_CODE_KEY+phone,code,LOGIN_CODE_TTL, TimeUnit.MINUTES);
         //5.发送验证码
